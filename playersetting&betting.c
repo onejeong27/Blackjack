@@ -58,7 +58,7 @@ int betDollar(void) {
 	
 	int i;
 	for(i=0;i<(n_user - 1);i++)
-		dollar[i] = (rand() % 10) + 1;
+		dollar[i] = (rand() % 5) + 1;
 	for(i=0;i<(n_user - 1);i++)
 		printf("player %d bets $ %d\n", i+1, dollar[i]);
 }
