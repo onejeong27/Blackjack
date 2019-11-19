@@ -49,11 +49,32 @@ int main(void){
 
 //calculate the actual card number in the blackjack game
 int getCardNum(int cardnum) {
-	int cardnum[52]={1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10,1,2,3,4,5,6,7,8,9,10,10,10,10}
+	int cardnum[4][13] = {
+	{1,2,3,4,5,6,7,8,9,10,10,10,10,}
+	{1,2,3,4,5,6,7,8,9,10,10,10,10,}
+	{1,2,3,4,5,6,7,8,9,10,10,10,10,}
+	{1,2,3,4,5,6,7,8,9,10,10,10,10,}
+	}
 }
 
 //print the card information (e.g. DiaA)
 void printCard(int cardnum) {
+	
+	int i,j;
+	int cardnum[i][j];
+	for (i=0; i<4; i++){
+		for (j=0,; j<13; j++);{
+		if(i==0);
+			cardnum[i][j] = DiAMOND[j];
+		else if(i==1);
+			cardnum[i][j] = CLOVER[j];
+		else if(i==2);
+			cardnum[i][j] = HEART[j];
+		else
+			cardnum[i][j] = SPACE[j];
+		}
+		
+	}
 	
 }
 
