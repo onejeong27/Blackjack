@@ -42,8 +42,20 @@ int gameEnd = 0; 							//game end flag
 //card processing functions ---------------
 
 //calculate the actual card number in the blackjack game
-//int getCardNum(int cardnum) {
-//}
+int getCardNum(int cardnum) {
+	
+	int i = cadnum % N_MAX_CARDNUM;
+	
+	if(i>= 1 && i<=10)
+		return i;
+	else if(i==0 || i == 11 || i == 12)
+		return 10;
+	  
+}
+
+
+
+
 
 //print the card information (e.g. DiaA)
 void main(int cardnum) {
