@@ -35,23 +35,16 @@ int gameEnd = 0; 							//game end flag
 
 
 //card array controllers -------------------------------
-int main(void){
-	cardTrayMix();
-}
 //mix the card sets and put in the array
-int cardTrayMix(void) {
+int MixCardTray(void) {
 
-	srand((unsigned)time(NULL));
-	
 	int i;
-	for(i=0; i<52; i++){
-		CardTray[i] = rand() % 52;
+	for(i=0; i< N_CARD; i++){
+		CardTray[i] = rand() % N_CARD;
 	
 	}
 		
 	printf("--> Card is Mixed and Put into the Tray");
-			
-	//return C;
 }
 
 //get one card from the tray
