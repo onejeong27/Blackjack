@@ -46,13 +46,12 @@ int cardTrayMix(void) {
 	int i;
 	for(i=0; i<52; i++){
 		CardTray[i] = rand() % 52;
-		printf("CardTray[i]=%d\n", CardTray[i]);
 	
 	}
 		
 	printf("--> Card is Mixed and Put into the Tray");
 			
-	return CardTray[0];
+	//return C;
 }
 
 //get one card from the tray
