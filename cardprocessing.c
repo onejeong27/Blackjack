@@ -53,21 +53,21 @@ void main(int cardnum) {
 	int i = cardnum / N_MAX_CARDNUM; 	//int i =0,1,2,3
 	int j = cardnum % N_MAX_CARDNUM;	//int j =0,1,2,3,4,5,6,7,8,9,10,11,12
 	
-	if(i=0)
+	if(i==0)
 		printf("DIAMOND");
-	else if(i=1)
+	else if(i==1)
 		printf("HEART");
-	else if(i=2)
+	else if(i==2)
 		printf("CLOVER");
 	else 
 		printf("SPADE");	
 	
 	
-	if(j=0)
+	if(j==0)
 		printf("K");
-	else if(j=11)
+	else if(j==11)
 		printf("J");
-	else if(j=12)
+	else if(j==12)
 		printf("Q");
 	else 
 		printf("%d", j);
