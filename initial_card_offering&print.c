@@ -56,17 +56,19 @@ void printCardInitialStatus(void) {
 	
 	int i;
 	
-	printf("-----server : ? ");
+	printf("-----server : ?  ");
 	printCard(cardhold[n_user][1]);
 	
 	printf("\n   -->you: ");
 	printCard(cardhold[i][0]);
+	printf("  ")
 	printCard(cardhold[i][1]);
 	
 	for(i=1; i<n_user; i++){
 		
 		printf("\n   -->player %d : ", i);
 		printCard(cardhold[i][0]);
+		printf("  ")
 		printCard(cardhold[i][1]);
 	}
 }
@@ -77,6 +79,7 @@ int getAction(void) {
 	printf("Do you Want to Go?(1:YES , 2:others):  ");
 	scanf("%d", &i);
 	
+	//computer players need getaction 
 }
 
 
