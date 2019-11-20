@@ -52,13 +52,16 @@ int configUser(void) {
 
 //betting
 int betDollar(void) {
-	int my_dollar;
+	
+	int my_bet;
+	
 	printf("your betting(total $50) = $ ");
-	scanf("%d", &my_dollar);
+	scanf("%d", &my_bet);
 	
 	int i;
-	for(i=0;i<(n_user - 1);i++)
-		dollar[i] = (rand() % 5) + 1;
-	for(i=0;i<(n_user - 1);i++)
-		printf("player %d bets $ %d\n", i+1, dollar[i]);
+	bet[0] = my_bet;
+	for(i=1;i<(n_user);i++)
+		bet[i] = (rand() % N_MAX_BET) + 1;
+	for(i=0;i<(n_user);i++)
+		printf("player %d bets $ %d\n", i, bet[i]);
 }
