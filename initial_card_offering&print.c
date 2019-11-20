@@ -14,13 +14,79 @@
 
 #define N_MIN_ENDCARD		30
 
-int main(){
-	return 0;
+//card tray object
+int CardTray[N_CARDSET*N_CARD];
+int cardIndex = 0;							
+
+
+//player info
+int dollar[N_MAX_USER];						//dollars that each player has
+int n_user;									//number of users
+
+
+//play yard information
+int cardhold[N_MAX_USER+1][N_MAX_CARDHOLD];	//cards that currently the players hold
+int cardSum[N_MAX_USER];					//sum of the cards
+int bet[N_MAX_USER];						//current betting 
+int gameEnd = 0; 							//game end flag
+
+
+
+//offering initial 2 cards
+void offerCards(void) {
+	
+	printf("***********************************CARD OFFERING***********************************\n");
+	
+	int i;
+	//1. give two card for each players
+	for (i=0;i<n_user;i++)
+	{
+		cardhold[i][0] = pullCard();
+		cardhold[i][1] = pullCard();
+	}
+	//2. give two card for the operator
+	cardhold[n_user][0] = pullCard();
+	cardhold[n_user][1] = pullCard();
+	
+	return;
 }
 
-int printCardInitialStatus(void){
-	-	
+//print initial card status
+void printCardInitialStatus(void) {
+	
+	int i;
+	
+	printf("-----server : ? ");
+	printCard(cardhold[n_user][1]);
+	
+	printf("\n   -->you: ");
+	printCard(cardhold[i][0]);
+	printCard(cardhold[i][1]);
+	
+	for(i=1; i<n_user; i++){
+		
+		printf("\n   -->player %d : ", i);
+		printCard(cardhold[i][0]);
+		printCard(cardhold[i][1]);
+	}
 }
 
+int getAction(void) {
+	
+	int i;
+	printf("Do you Want to Go?(1:YES , 2:others):  ");
+	scanf("%d", &i);
+	
+}
+
+
+void printUserCardStatus(int user, int cardcnt) {
+	int i;
+	
+	printf("   --> card : ");
+	for (i=0;i<cardcnt;i++)
+		printCard(cardhold[user][i]);
+	printf("\t ::: ");
+}
 
 
