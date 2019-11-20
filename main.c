@@ -131,7 +131,7 @@ int main(int argc, char *argv[]) {
 	srand((unsigned)time(NULL));
 	
 	//set the number of players
-	configUser();
+	n_user = configUser();
 
 
 	//Game initialization --------

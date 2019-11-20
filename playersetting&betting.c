@@ -33,23 +33,16 @@ int gameEnd = 0; 							//game end flag
 
 
 
-
-
-
-int main(void){
-	
-	configUser();
-	betDollar();
-	
-	return 0;
-}
-
 //player settiing
 int configUser(void) {
 	
 	do{
+	
+	
 	printf("Input the player of numbers(Max:5) : ");
 	scanf("%d", &n_user);
+	
+	n_user = getIntegerInput();
 	
 	if(n_user > N_MAX_USER)
 		printf("Too Many Players\n");
