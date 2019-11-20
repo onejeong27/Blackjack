@@ -32,19 +32,12 @@ int bet[N_MAX_USER];						//current betting
 int gameEnd = 0; 							//game end flag
 
 
-
-
-
-
-
-
-
 //card processing functions ---------------
 
 //calculate the actual card number in the blackjack game
 int getCardNum(int cardnum) {
 	
-	int i = cadnum % N_MAX_CARDNUM;
+	int i = cadnum % N_MAX_CARDNUM ;
 	
 	if(i>= 1 && i<=10)
 		return i;
@@ -52,9 +45,6 @@ int getCardNum(int cardnum) {
 		return 10;
 	  
 }
-
-
-
 
 
 //print the card information (e.g. DiaA)
@@ -77,6 +67,8 @@ void main(int cardnum) {
 	
 	if(j==0)
 		printf("K");
+	else if(j==1);
+		printf("A");
 	else if(j==11)
 		printf("J");
 	else if(j==12)
@@ -85,4 +77,3 @@ void main(int cardnum) {
 		printf("%d", j);
 	
 }
-
