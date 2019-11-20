@@ -36,28 +36,22 @@ int gameEnd = 0; 							//game end flag
 
 
 
-int main(void){
-	
-	getCardNum();
-	printCard();
-	
-	return 0;
-}
+
 
 
 //card processing functions ---------------
 
 //calculate the actual card number in the blackjack game
-int getCardNum(int cardnum) {
-	int cardnum[4][13] = {
-
-}
+//int getCardNum(int cardnum) {
+//}
 
 //print the card information (e.g. DiaA)
-void printCard(int cardnum) {
+void main(int cardnum) {
 	
-	int i = cardnum / N_MAX_CARDNUM 	//int i =0,1,2,3
-	int j = cardnum % N_MAX_CARDNUM 	//int j =0,1,2,3,4,5,6,7,8,9,10,11,12
+	scanf("%d", &cardnum);
+	
+	int i = cardnum / N_MAX_CARDNUM; 	//int i =0,1,2,3
+	int j = cardnum % N_MAX_CARDNUM;	//int j =0,1,2,3,4,5,6,7,8,9,10,11,12
 	
 	if(i=0)
 		printf("DIAMOND");
@@ -68,13 +62,15 @@ void printCard(int cardnum) {
 	else 
 		printf("SPADE");	
 	
+	
 	if(j=0)
 		printf("K");
 	else if(j=11)
-		pintf("J");
+		printf("J");
 	else if(j=12)
 		printf("Q");
 	else 
 		printf("%d", j);
-
+	
+}
 
