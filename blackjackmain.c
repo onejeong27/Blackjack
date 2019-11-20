@@ -47,3 +47,61 @@ int getIntegerInput(void) {
     return input;
 }
 
+
+int main(int argc, char *argv[]) {
+	int roundIndex = 1;
+	int user;
+	
+	srand((unsigned)time(NULL));
+	
+//----------------set the number of players----------------------
+	
+	n_user = configUser();
+
+
+//----------------Game initialization ---------------------------
+	//1. players' dollar
+	for (i=0; i<n_user; i++)
+		dollar[i] =  N_DOLLAR;
+	
+	//2. card tray
+	mixCardTray();
+
+//------------------------------Game start -----------------------
+	do {
+		printf("\n----------------------------------------------------------");
+		printf("\n*************** ROUND %d (CardIndex %d)*******************", roundIndex++, cardIndex);
+		printf("\n----------------------------------------------------------\n");
+		
+		printf("********************* BETTING STEP *************************\n");
+		betDollar();
+		printf("----------------------------------------------------------\n\n");
+		
+		offerCards(); //1. give cards to all the players
+		printf("********************** CARD OFFERING ***********************\n");
+		printCardInitialStatus();
+		
+		
+		printf("\n********************* GAME start *************************\n");
+		
+		//each player's turn
+		for (user=0; user<=n_user; user++) //each player
+		{
+			while () //do until the player dies or player says stop
+			{
+				//print current card status printUserCardStatus();
+				//check the card status ::: calcStepResult()
+				//GO? STOP? ::: getAction()
+				//check if the turn ends or not
+			}
+		}
+		
+		//result
+		checkResult();
+	} while (gameEnd == 0);
+	
+	checkWinner();
+	
+	
+	return 0;
+}
