@@ -8,7 +8,7 @@
 
 #define N_MAX_CARDNUM		13
 #define N_MAX_USER			5
-#define N_MAX_CARDHOLD		10
+#define N_MAX_CARDHOLD		10 
 #define N_MAX_GO			17
 #define N_MAX_BET			5
 
@@ -50,32 +50,31 @@ int main(void){
 //calculate the actual card number in the blackjack game
 int getCardNum(int cardnum) {
 	int cardnum[4][13] = {
-	{1,2,3,4,5,6,7,8,9,10,10,10,10,}
-	{1,2,3,4,5,6,7,8,9,10,10,10,10,}
-	{1,2,3,4,5,6,7,8,9,10,10,10,10,}
-	{1,2,3,4,5,6,7,8,9,10,10,10,10,}
-	}
+
 }
 
 //print the card information (e.g. DiaA)
 void printCard(int cardnum) {
 	
-	int i,j;
-	int cardnum[i][j];
-	for (i=0; i<4; i++){
-		for (j=0,; j<13; j++);{
-		if(i==0);
-			cardnum[i][j] = DiAMOND[j];
-		else if(i==1);
-			cardnum[i][j] = CLOVER[j];
-		else if(i==2);
-			cardnum[i][j] = HEART[j];
-		else
-			cardnum[i][j] = SPACE[j];
-		}
-		
-	}
+	int i = cardnum / N_MAX_CARDNUM 	//int i =0,1,2,3
+	int j = cardnum % N_MAX_CARDNUM 	//int j =0,1,2,3,4,5,6,7,8,9,10,11,12
 	
-}
+	if(i=0)
+		printf("DIAMOND");
+	else if(i=1)
+		printf("HEART");
+	else if(i=2)
+		printf("CLOVER");
+	else 
+		printf("SPADE");	
+	
+	if(j=0)
+		printf("K");
+	else if(j=11)
+		pintf("J");
+	else if(j=12)
+		printf("Q");
+	else 
+		printf("%d", j);
 
 
