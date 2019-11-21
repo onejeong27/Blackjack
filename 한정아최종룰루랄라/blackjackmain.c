@@ -234,7 +234,6 @@ void printCardInitialStatus(void) {
 		printCard(cardhold[i][0]); printCard(cardhold[i][1]);
 		printf("\n");
 	}
-	
 }
 
 int getAction(int userNum) {
