@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "Card.c"
 
 #define N_CARDSET			1
 #define N_CARD				52
@@ -13,6 +14,17 @@
 #define N_MAX_BET			5
 
 #define N_MIN_ENDCARD		30
+
+#define TRUE 1
+#define FALSE 0
+
+extern int cardhold[N_MAX_USER+1][N_MAX_CARDHOLD];	// 플레이어가 현재 어떤 카드를 들고 있는지 
+extern int numCard[N_MAX_USER+1];                  // 플레이어가 현재 몇장의 카드를 들고 있는 
+extern int sumCard[N_MAX_USER+1];					// 플레이어가 현재 들고 있는 카드의 합(각 turn마다 계산해서 갱신됨) 
+extern int dead[N_MAX_USER+1];				        // 디폴트 FALSE. 오버플로우 발생시 TRUE. 
+extern int win[N_MAX_USER+1];						// 디폴트 FALSE. 승리시 TRUE. 
+extern int dollar[N_MAX_USER];						// 플레이어 현재 자본 
+extern int bet[N_MAX_USER];						// 플레이어가 이번 라운드에서 배팅한 금액 
 
 extern int n_user;
 
