@@ -35,8 +35,6 @@ int gameEnd = 0; 							//game end flag
 //offering initial 2 cards
 void offerCards(void) {
 	
-	printf("***********************************CARD OFFERING***********************************\n");
-	
 	int i;
 	
 	cardhold[n_user][0] = pullCard();

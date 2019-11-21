@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <time.h>
+#include "BJ_number of players.c
+#include "BJ_card array controllers.c"
+#include "BJ_betting.c"
+#include "BJ_initial card offer&print.c"
+#include "BJ_playerturn.c"
+#include "BJ_checkResult.c"
+#include "BJ_checkWinner.c"--
 #define N_CARDSET			1
 #define N_CARD				52
 #define N_DOLLAR			50
@@ -64,7 +71,7 @@ int main(int argc, char *argv[]) {
 	for (user=0; user<n_user; user++)
 		dollar[user] =  N_DOLLAR;
 	
-	//2. card tray
+	//2. card tray	
 	mixCardTray();
 
 //------------------------------Game start -----------------------
