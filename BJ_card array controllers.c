@@ -17,7 +17,8 @@
 
 //card tray object
 extern CardTray[N_CARDSET*N_CARD];
-extern cardIndex = 0;							
+extern cardIndex = 0;
+extern cardnum;							
 
 
 //---------------card array controllers----------------------------

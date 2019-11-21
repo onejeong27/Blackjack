@@ -100,8 +100,8 @@ int main(int argc, char *argv[]) {
 				printUserCardStatus();
 				calcStepResult();//check the card status ::: calcStepResult()
 				getAction();
-				//print current card status printUserCardStatus();
-				//check if the turn ends or not
+				
+				if(cardindex)
 			}
 		}
 		
