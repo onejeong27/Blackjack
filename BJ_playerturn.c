@@ -17,7 +17,9 @@
 extern CardTray[N_CARDSET*N_CARD];							
 extern n_user;									//number of users
 extern cardhold[N_MAX_USER+1][N_MAX_CARDHOLD];	//cards that currently the players hold
-extern cardSum[N_MAX_USER];					//sum of the cards
+extern cardSum[N_MAX_USER];	 				   //sum of the cards
+extern cardnum;
+
 
 
 void printUserCardStatus(int user, int cardcnt) {
@@ -37,15 +39,21 @@ int getAction(void) {
 	int i;
 	int act;
 	
-	if(i==0);
+	if(i==0)
+		
 		printf("Do you Want to Go?(1:YES , 2:others):  ");
-		act=getIntegerInput()
+		act=getIntegerInput();
+		
+		if(act==1)
+			cardhold[i][cardnum] = pullcard();		
+		
+		
 	else 
 		if(CardSum[i]>=17);
 			pirntf("   STAY")
 		else
 			printf("   GO")
-		
+			cardhold[i][cardnum] = pullcard();
 	
 }
 
@@ -70,7 +78,7 @@ int calcStepResult() {
 		
 		if (cardhold[user][i]%13==1){
 			if(CardSum[user]<=11)
-			CardSum[user]+=10;}
+				CardSum[user]+=10;}
 			
 	}
 	

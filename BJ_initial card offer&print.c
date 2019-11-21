@@ -53,7 +53,7 @@ void printCard(int cardnum) {
 	
 	if(j==0)
 		printf("K");
-	else if(j==1);
+	else if(j==1)
 		printf("A");
 	else if(j==11)
 		printf("J");

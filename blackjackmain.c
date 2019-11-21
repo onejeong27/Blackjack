@@ -30,6 +30,7 @@ int cardIndex = 0;
 //player info
 int dollar[N_MAX_USER];						//dollars that each player has
 int n_user;									//number of users
+int cardnum;
 
 
 //play yard information
@@ -96,9 +97,10 @@ int main(int argc, char *argv[]) {
 		{
 			while () //do until the player dies or player says stop
 			{
-				printUserCardStatus();	//print current card status printUserCardStatus();
-				getAction();//check the card status ::: calcStepResult()
-				calcStepResult();//GO? STOP? ::: getAction()
+				printUserCardStatus();
+				calcStepResult();//check the card status ::: calcStepResult()
+				getAction();
+				//print current card status printUserCardStatus();
 				//check if the turn ends or not
 			}
 		}
