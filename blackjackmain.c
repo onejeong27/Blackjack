@@ -33,6 +33,8 @@ int bet[N_MAX_USER];						//current betting
 
 int n_user;
 
+
+
 int getIntegerInput(void) {
     int input, num;
     
@@ -81,8 +83,6 @@ void printCard(int cardnum) {
 		printf("Queen ");
 	else 
 		printf("%d ", j);
-	
-	
 }
 
 
@@ -94,6 +94,8 @@ int mixCardTray(void) {
 	int cardnum;
 	int cardChoosen[N_CARD];
 	
+	
+	
 	for (i = 0; i < N_CARD; i++) {
 		cardChoosen[i] = FALSE;
 	}
@@ -101,8 +103,7 @@ int mixCardTray(void) {
 	
 	
 	for(i=0; i< N_CARD; i++){
-		cardnum = rand() % N_CARD;
-		
+		cardnum = rand() % N_CARD; 
 		if (cardChoosen[cardnum] == TRUE) {
 			i--;
 			continue;
@@ -110,24 +111,11 @@ int mixCardTray(void) {
 		
 		cardChoosen[cardnum] = TRUE;
 		CardTray[i] = cardnum;
-	
 	}
 		
-	printf("--> Card is Mixed and Put into the Tray");
+	printf("--> Card is Mixed and Put into the Tray \n");
 }
 
-
-
-//get one card from the tray
-int pullCard(user) {
-	if (cardIndex == N_CARD) {
-		printf("card ran out of the tray!! finishing the game...\n");
-		checkFinalWinner();
-	}
-	
-	cardhold[user][numCard[user]++] = CardTray[cardIndex];
-	cardIndex++;
-}
 
 void checkFinalWinner(void) {
 	int i;
@@ -140,7 +128,7 @@ void checkFinalWinner(void) {
 		}
 	}
 	
-	printf(" -------------------------------------------\n");
+	printf(" \n\n\n-------------------------------------------\n");
 	printf(" -------------------------------------------\n");
 	printf(" -------------------------------------------\n");
 	printf(" -------------------------------------------\n");
@@ -152,6 +140,19 @@ void checkFinalWinner(void) {
 	printf("player%d's win \n", winner);
 	exit(1);
 }
+
+//get one card from the tray
+int pullCard(user) {
+	if (cardIndex == N_CARD) {
+		printf("card ran out of the tray!! finishing the game...\n");
+		checkFinalWinner();
+	}
+	
+	cardhold[user][numCard[user]++] = CardTray[cardIndex];
+	cardIndex++;
+}
+
+
 
 
 //playing game functions -----------------------------
@@ -206,16 +207,16 @@ void betDollar(void) {
 void offerCards(void) {
 	int i;
 	
-	cardhold[n_user][0] = pullCard(n_user);
+	pullCard(n_user);
 	
 	for (i=0;i<n_user;i++){
-		cardhold[i][0] = pullCard(i);
+		pullCard(i);
 	}
 	
-	cardhold[n_user][1] = pullCard(n_user);
+	pullCard(n_user);
 
 	for (i=0;i<n_user;i++){
-		cardhold[i][1] = pullCard(i);
+		pullCard(i);
 	}
 	return;
 }
@@ -269,31 +270,6 @@ void printUserCardStatus(int user, int cardcnt) {
 	printf("\t ::: ");
 }
 
-// calculate the card sum and see if : 1. under 21, 2. over 21, 3. blackjack
-int calcStepResult(int userNum, int cardNum) {
-	int i;
-	int ace = 0, sum = 0;
-	for (i = 0; i < cardNum; i++) {
-		if (getCardNum(cardhold[userNum][i]) == 1) {
-			ace++;
-		}
-		sum += getCardNum(cardhold[userNum][i]);
-	}
-	while (ace > 0) {
-		if (sum + 10 <= 21) {
-			sum += 10;
-		}
-		ace--;
-	}
-	
-	if (userNum == n_user) {
-		calcDealer(sum);
-	}
-	else {
-		calcPlayer(userNum, sum);
-	}
-}
-
 void calcDealer(int sum) {
 	sumCard[n_user] = sum;
 	if (sum == 21) {
@@ -317,6 +293,31 @@ void calcPlayer(int userNum, int sum) {
 		dead[userNum] = TRUE;
 		dollar[userNum] -= bet[userNum];
 		printf("DEAD (sum:%d) --> -$%d ($%d) \n", sum, bet[userNum], dollar[userNum]);
+	}
+}
+
+// calculate the card sum and see if : 1. under 21, 2. over 21, 3. blackjack
+int calcStepResult(int userNum, int cardNum) {
+	int i;
+	int ace = 0, sum = 0;
+	for (i = 0; i < cardNum; i++) {
+		if (getCardNum(cardhold[userNum][i]) == 1) {
+			ace++;
+		}
+		sum += getCardNum(cardhold[userNum][i]);
+	}
+	while (ace > 0) {
+		if (sum + 10 <= 21) {
+			sum += 10;
+		}
+		ace--;
+	}
+	
+	if (userNum == n_user) {
+		calcDealer(sum);
+	}
+	else {
+		calcPlayer(userNum, sum);
 	}
 }
 
@@ -374,12 +375,32 @@ int checkWinner() {
 		}
 		else if (win[i]) // 블랙잭 아니지만 딜러가 오버플루우인 경우 // 블랙잭 아니지만 딜러 카드합보다 플레어어 카드합이 크거나 같은 경우
 			printf("win (sum : %d) --> $%d \n", sumCard[i], dollar[i]);
-		else if (dead[i]) // 오버플로우
+		else if (dead[i]) { // 오버플로우
 			printf("lose due to overflow! ($%d) \n", dollar[i]);
-		else // 오버플로우 아니지만 딜러가 블랙잭인 경우 // 오버플로우 아니지만 딜러 카드합보다 플레이어 카드합이 작은 경우
+			if (dollar[i] == 0) {
+				printf("bankrupted! game will be ended \n");
+				checkFinalWinner();
+			}
+		}
+		else { // 오버플로우 아니지만 딜러가 블랙잭인 경우 // 오버플로우 아니지만 딜러 카드합보다 플레이어 카드합이 작은 경우
 			printf("lose (sum : %d) --> $%d \n", sumCard[i], dollar[i]);
+			if (dollar[i] == 0) {
+				printf("bankrupted! game will be ended \n");
+				checkFinalWinner();
+			}
+		}
+			
 	}
 	printf("\n\n");
+}
+
+void init(void) {
+	int i;
+	for (i = 0; i <= n_user; i++) {
+		numCard[i] = 0;
+		win[i] = FALSE;
+		dead[i] = FALSE;
+	}
 }
 
 int main(int argc, char *argv[]) {
@@ -401,6 +422,7 @@ int main(int argc, char *argv[]) {
 		printf("\n----------------------------------------------------------");
 		printf("\n*************** ROUND %d (CardIndex %d)*******************", roundIndex++, cardIndex);
 		printf("\n----------------------------------------------------------\n");
+		init();
 		
 		printf("********************* BETTING STEP *************************\n");
 		betDollar();
@@ -436,11 +458,13 @@ int main(int argc, char *argv[]) {
 					break;
 				}
 			
-				cardhold[i][numCard[i]] = pullCard(i);
+				pullCard(i);
 			}
 			printf("\n\n");
 		}
 		checkResult();
+		
+		printf("-------------------- ROUND %d result ....\n", roundIndex);
 		checkWinner();
 	} // end of round
 	
