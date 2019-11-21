@@ -61,8 +61,8 @@ int main(int argc, char *argv[]) {
 
 //----------------Game initialization ---------------------------
 	//1. players' dollar
-	for (i=0; i<n_user; i++)
-		dollar[i] =  N_DOLLAR;
+	for (user=0; user<n_user; user++)
+		dollar[user] =  N_DOLLAR;
 	
 	//2. card tray
 	mixCardTray();
@@ -70,7 +70,7 @@ int main(int argc, char *argv[]) {
 //------------------------------Game start -----------------------
 	do {
 		printf("\n----------------------------------------------------------");
-		printf("\n*************** ROUND %d (CardIndex %d)*******************", roundIndex++, cardIndex);
+		printf("\n*************** ROUND %d (CardIndex %d)*******************", roundIndex, cardIndex);
 		printf("\n----------------------------------------------------------\n");
 		
 		printf("********************* BETTING STEP *************************\n");
@@ -89,15 +89,24 @@ int main(int argc, char *argv[]) {
 		{
 			while () //do until the player dies or player says stop
 			{
-				//print current card status printUserCardStatus();
-				//check the card status ::: calcStepResult()
-				//GO? STOP? ::: getAction()
+				printUserCardStatus();	//print current card status printUserCardStatus();
+				getAction();//check the card status ::: calcStepResult()
+				calcStepResult();//GO? STOP? ::: getAction()
 				//check if the turn ends or not
 			}
 		}
 		
-		//result
+//--------------------------------------ROUND RESULT-------------------------------------------------
+		
+		printf("\n\n******************ROUND %d RESULT******************************", roundIndex);
 		checkResult();
+		
+		for (user=0, user < n_user, user++)
+			if dollar[user] = 0;
+			
+		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<game End.............i want to go Result!!	
+		roundIndex++	
+		 
 	} while (gameEnd == 0);
 	
 	checkWinner();
